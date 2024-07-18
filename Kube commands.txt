@@ -1,0 +1,62 @@
+kubectl --kubeconfig="config-poms-dev" -n "us-west-app-dev" get configmap adminsvc-config
+
+
+kubectl --kubeconfig="config-poms-dev" -n "us-west-app-dev" get pods
+
+
+
+
+
+go to /usr/local/ecomm/data/users/ppemmaws/kubeconfig
+and give 
+pomsdev -n nameofnamesapce get pods
+pomsqa -n nameofnamespace get pods
+pomsperf -n nameofnamespace get pods
+pomsperfeast -n nameofnamespace get pods
+pomsprodwest -n nameofnamespace get pods
+pomsprodeast -n nameofnamesapce get pods
+
+pomsdev -n nameofnamespace get gateway -o yaml
+
+pomsprodwest -n istio-system get pods -o wide
+pomsprodeast -n istio-system get pods -o wide
+
+pomsprodeast -n us-east-app-prod describe pod "enter name of pod here"
+
+pomsprodwest -n istio-system get svc -o wide
+pomsprodeast -n istio-system get svc -o wide
+
+intopsdev -n sonarqube get service -o wide
+intopsprod -n sonarqube get service -o wide
+intopsdevaks -n ado-dev get pods
+
+wag-acs-admin repo for all gateway related yaml files and networking.
+
+
+pomsqa -n nameofnamespace get pods podname -o jsonpath='{.spec.containers[*].name}'   (to get containers in a pod)
+intopsdevaks -n nameofnamespace exec -it podname bash  (to enter into default container)
+.0
+
+intopsdevaks -n ado-dev get deploy
+intopsdevaks -n ado-dev delete deploy deploayname
+
+healthcheck url
+pomsprodwest -n nameosnamespace get gateway nameofgateway -o yaml(make sure you get gateway name by giving "pomsprodwest -n nameosnamespace get gateway" command and copy it
+pomsprodwest -n us-west-pcas-prod describe virtualservice -o yaml (to find the url of host add https:// in front and add port 5043 after host)
+pomsdev -n pcas-dev get virtualservice -o yaml( to get the relative path of microservice append microservicename/healthcheck to host name and 5043 port)
+
+logs
+pomsdev -n pcas-dev logs nameofpod
+
+view contents inside a pod without entering into it 
+pomsdev -n nameofnamespace exec -it podname ls 
+
+pomsprodwest -n nameofnamespace exec -it podname /usr/local/xyz
+
+pomsprodwest -n nameofnamespace exec -it podname bash
+
+
+
+
+
+
